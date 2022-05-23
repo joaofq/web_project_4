@@ -4,9 +4,15 @@
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
+  color: #ffffff;
 }
 
 .page {
+  margin: 0 auto;
   max-width: 70%;
   background-color: black;
+}
+
+.logo {
+  margin: 45px 0 auto;
 }
