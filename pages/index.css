@@ -60,6 +60,10 @@
 
 .profile__name {
   margin: 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 1.14;
 }
 
 .editButton {
@@ -77,6 +81,10 @@
 .profile__description {
   margin-top: 16px;
   margin: 16px 0 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
 }
 
 .addButton {
@@ -115,9 +123,10 @@
 .card__text {
   margin: 0;
   color: black;
-  font-size: 24px;
+  font-style: normal;
   font-weight: 900;
-  line-height: 0.82;
+  font-size: 24px;
+  line-height: 1.2;
 }
 
 .likeButton {
@@ -132,5 +141,5 @@ footer p {
   color: #545454;
   font-size: 18px;
   font-weight: 400;
-  line-height: 0.82;
+  line-height: 1.22;
 }
