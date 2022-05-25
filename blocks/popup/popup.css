@@ -1,0 +1,61 @@
+.popup {
+  position: fixed;
+  /* display: none; /*GATILHO inclui/remove no popup_opened*/
+  width: 100vw;
+  height: 100vw;
+  background-color: rgba(000, 000, 000, 0.5);
+}
+
+.popup__container {
+  margin-top: 25vh; /*?????????? calc? */
+  background-color: white;
+  max-width: 430px;
+  width: 90%;
+  color: black;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 36px;
+}
+
+.popup_opened {
+  display: block;
+}
+
+.popup__title {
+  margin: 0;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.popup__input {
+  margin-top: 54px 0;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  color: black;
+  width: 358px;
+}
+
+.popup__input:last-child {
+  margin-top: 29px;
+}
+
+.popup__button {
+  margin-top: 48px;
+  width: 358px;
+  height: 50.15px;
+  background-color: black;
+  color: white;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  text-align: center;
+}
