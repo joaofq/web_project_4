@@ -1,16 +1,18 @@
-# Project 4: Around The U.S.
+# Projeto 3: Around the U.S.A.
 
-### Overview
+### Visão geral
 
-* Figma
-* Images
+Este é um projeto de uma página, elaborado durante o curso de desenvolvimento web Practicum by Yandex. O Projeto consiste em visualizar o layout no Figma e transformálo em código.
 
-**Figma**
+**Tecnologias Utilizadas**
 
-* [Link to the project in Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+- Método BEM de organização de arquivos
+- HTML responsivo com tags semânticas
+- CSS com layout responsivo
+  -- flex-box
+  -- mediaqueries
+- Javascript
 
-**Images**
+* [Link para o projeto no Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
 
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-
-Have fun with JavaScript!
+* [Link para visualização do projeto no Github Pages](https://joaofq.github.io/web_project_4/)
