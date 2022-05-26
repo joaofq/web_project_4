@@ -4,3 +4,7 @@
   background-color: transparent;
   border: 1px solid white;
 }
+
+.editbutton:hover {
+  opacity: 0.6;
+}

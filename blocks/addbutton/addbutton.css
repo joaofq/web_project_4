@@ -4,3 +4,7 @@
   background-color: transparent;
   border: 2px solid white;
 }
+
+.addbutton:hover {
+  opacity: 0.6;
+}
