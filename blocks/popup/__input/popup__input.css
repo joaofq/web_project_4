@@ -1,0 +1,16 @@
+.popup__input {
+  display: block;
+  margin-top: 29px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  color: black;
+  max-width: 328px;
+}
+
+.popup__input:last-child {
+  margin-top: 29px;
+}
