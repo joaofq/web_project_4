@@ -3,3 +3,8 @@
   border: none;
   background-color: transparent;
 }
+
+.likebutton:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
