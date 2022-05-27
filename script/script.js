@@ -6,6 +6,7 @@ let inputAbout = document.querySelector(".popup__input-about");
 let profileName = document.querySelector(".profile__name");
 let profileDescription = document.querySelector(".profile__description");
 let popup__button = document.querySelector(".popup__button");
+let likeButton = document.querySelectorAll(".likebutton");
 
 editButton.addEventListener("click", callPopup);
 closeButton.addEventListener("click", callPopup);
@@ -22,4 +23,11 @@ function savePopup(evt) {
   profileDescription.textContent = inputAbout.value;
   popup.classList.toggle("popup_opened");
   evt.preventDefault();
+}
+
+for (let i = 0; i < likeButton.length; i++) {
+  likeButton[i].addEventListener("click", callLikeButton);
+  function callLikeButton() {
+    likeButton[i].classList.toggle("likebutton_active");
+  }
 }
