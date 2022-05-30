@@ -8,10 +8,6 @@ let profileDescription = document.querySelector(".profile__description");
 let popup__button = document.querySelector(".popup__button");
 let likeButton = document.querySelectorAll(".likebutton");
 
-editButton.addEventListener("click", callPopup);
-closeButton.addEventListener("click", callPopup);
-popup__button.addEventListener("click", savePopup);
-
 function callPopup() {
   popup.classList.toggle("popup_opened");
   inputName.value = profileName.textContent;
@@ -31,3 +27,7 @@ for (let i = 0; i < likeButton.length; i++) {
     likeButton[i].classList.toggle("likebutton_active");
   }
 }
+
+editButton.addEventListener("click", callPopup);
+closeButton.addEventListener("click", callPopup);
+popup__button.addEventListener("click", savePopup);

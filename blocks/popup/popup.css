@@ -1,6 +1,6 @@
 .popup {
   position: fixed;
-  display: none; /*GATILHO inclui/remove no popup_opened*/
+  display: none;
   width: 100%;
   height: 100%;
   background-color: rgba(000, 000, 000, 0.5);
