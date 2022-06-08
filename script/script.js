@@ -18,13 +18,13 @@ const inputCardLink = document.querySelector(".popup__input-link");
 
 //1.2. Popup edit profile - puxa dados iniciais
 
-function callPopup() {
+function callPopupEditProfile() {
   popupEditProfile.classList.add("popup_opened");
   inputName.value = profileName.textContent;
   inputAbout.value = profileDescription.textContent;
 }
 
-editButton.addEventListener("click", callPopup); //Jogar pro final
+editButton.addEventListener("click", callPopupEditProfile); //Jogar pro final
 
 //1.3. Popup addCard
 
@@ -45,6 +45,8 @@ closeButton.forEach(function (item) {
 
 //3 SALVA OS POPUPS
 
+//3.1. Salva dados do Edit Profile
+
 saveButtonEdit.addEventListener("click", function (evt) {
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputAbout.value;
@@ -53,6 +55,9 @@ saveButtonEdit.addEventListener("click", function (evt) {
 });
 
 saveButtonAddCard.addEventListener("click", addCard);
+
+//3.1. Salva dados do AddCards
+//---> Vamos tentar dar push na lista CARDS INICIAIS.
 
 function addCard() {
   let cardTitle = inputCardTitle.value;
@@ -66,6 +71,7 @@ function addCard() {
   inputCardLink.value = "";
   inputCardTitle.value = "";
   event.preventDefault();
+  callLikeButton();
 }
 
 //4. GERA OS 6 CARDS INICIAIS
@@ -107,16 +113,29 @@ initialCards.map(function (item) {
 
 //5. BOTÃO CURTIR
 
-//const likeButton = document.querySelectorAll(".likebutton");
+//------> Quando adiciono novos cartões, a função deixa de funcionar para os antigos. Vai ter que vincular a lista.
 
-/*function liked() {
-  item.classList.toggle("likebutton_active");
+function callLikeButton() {
+  let likeButton = document.querySelectorAll(".likebutton");
+  likeButton.forEach(function (item, index) {
+    item.addEventListener("click", liked);
+    function liked() {
+      likeButton[index].classList.toggle("likebutton_active");
+    }
+  });
 }
 
+callLikeButton();
 
-/*for (let i = 0; i < likeButton.length; i++) {
-  likeButton[i].addEventListener("click", callLikeButton);
-  function callLikeButton() {
-    likeButton[i].classList.toggle("likebutton_active");
+//6. BOTÃO DELETAR
+//----> Falta operar (vai ter que deletar o elemento da lista)
+
+let deleteButton = document.querySelectorAll(".card__trash");
+deleteButton.forEach(function (item, index) {
+  item.addEventListener("click", deleted);
+  function deleted() {
+    console.log("delete");
   }
-}*/
+});
+
+//7. AUMENTAR IMAGENS
