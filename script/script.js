@@ -60,13 +60,18 @@ saveButtonAddCard.addEventListener("click", addCard);
 //---> Vamos tentar dar push na lista CARDS INICIAIS.
 
 function addCard() {
-  let cardTitle = inputCardTitle.value;
-  let cardLink = inputCardLink.value;
+  let newCard = {
+    name: inputCardTitle.value,
+    link: inputCardLink.value,
+  };
+  initialCards.unshift(newCard);
+
   let cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-  cardElement.querySelector(".card__text").textContent = cardTitle;
-  cardElement.querySelector(".card__image").src = cardLink;
-  cardElement.querySelector(".card__image").alt = "Image of " + cardTitle;
+  cardElement.querySelector(".card__text").textContent = newCard.name;
+  cardElement.querySelector(".card__image").src = newCard.link;
+  cardElement.querySelector(".card__image").alt = "Image of " + newCard.name;
   elements.prepend(cardElement);
+
   popupAddCard.classList.remove("popup_opened");
   inputCardLink.value = "";
   inputCardTitle.value = "";
@@ -103,13 +108,18 @@ const initialCards = [
   },
 ];
 
-initialCards.map(function (item) {
-  let cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-  cardElement.querySelector(".card__text").textContent = item.name;
-  cardElement.querySelector(".card__image").src = item.link;
-  cardElement.querySelector(".card__image").alt = "Image of " + item.name;
-  elements.append(cardElement);
-});
+function callInitialCards() {
+  initialCards.map(function (item) {
+    let cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+    cardElement.querySelector(".card__text").textContent = item.name;
+    cardElement.querySelector(".card__image").src = item.link;
+    cardElement.querySelector(".card__image").alt = "Image of " + item.name;
+    return elements.append(cardElement);
+  });
+  callLikeButton();
+}
+
+callInitialCards(); //jogar para o final
 
 //5. BOTÃO CURTIR
 
@@ -123,9 +133,7 @@ function callLikeButton() {
       likeButton[index].classList.toggle("likebutton_active");
     }
   });
-}
-
-callLikeButton();
+} //jogar para o final
 
 //6. BOTÃO DELETAR
 //----> Falta operar (vai ter que deletar o elemento da lista)
