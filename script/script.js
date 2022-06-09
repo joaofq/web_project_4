@@ -77,6 +77,7 @@ function addCard() {
   inputCardTitle.value = "";
   event.preventDefault();
   callLikeButton();
+  callDeleteButton();
 }
 
 //4. GERA OS 6 CARDS INICIAIS
@@ -116,34 +117,35 @@ function callInitialCards() {
     cardElement.querySelector(".card__image").alt = "Image of " + item.name;
     return elements.append(cardElement);
   });
-  callLikeButton();
-}
-
-callInitialCards(); //jogar para o final
+} //jogar para o final
 
 //5. BOTÃO CURTIR
 
-//------> Quando adiciono novos cartões, a função deixa de funcionar para os antigos. Vai ter que vincular a lista.
+//------> Quando adiciono novos cartões, a função deixa de funcionar para os antigos.
 
-function callLikeButton() {
-  let likeButton = document.querySelectorAll(".likebutton");
-  likeButton.forEach(function (item, index) {
-    item.addEventListener("click", liked);
-    function liked() {
-      likeButton[index].classList.toggle("likebutton_active");
-    }
+const callLikeButton = function () {
+  likeButton = document.querySelectorAll(".likebutton");
+  likeButton.forEach(function (item) {
+    item.addEventListener("click", function (evt) {
+      evt.target.classList.toggle("likebutton_active");
+      console.log("Evento: " + evt + "item: " + item);
+    });
   });
-} //jogar para o final
+};
 
 //6. BOTÃO DELETAR
-//----> Falta operar (vai ter que deletar o elemento da lista)
 
-let deleteButton = document.querySelectorAll(".card__trash");
-deleteButton.forEach(function (item, index) {
-  item.addEventListener("click", deleted);
-  function deleted() {
-    console.log("delete");
-  }
-});
+const callDeleteButton = function () {
+  deleteButton = document.querySelectorAll(".card__trash");
+  deleteButton.forEach(function (item) {
+    item.addEventListener("click", function (evt) {
+      evt.target.parentElement.remove();
+    });
+  });
+};
+
+callInitialCards();
+callLikeButton();
+callDeleteButton();
 
 //7. AUMENTAR IMAGENS
