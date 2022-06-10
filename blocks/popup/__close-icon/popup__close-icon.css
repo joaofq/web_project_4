@@ -1,9 +1,7 @@
 .popup__close-icon {
-  width: 40px;
-  height: 40px;
   position: relative;
-  top: -80px;
-  left: 240px;
+  top: -35px;
+  left: 230px;
 }
 
 .popup__close-icon:hover {
@@ -16,7 +14,7 @@
     width: 40px;
     height: 40px;
     position: relative;
-    top: -80px;
+    top: -40px;
     left: 120px;
   }
 }
