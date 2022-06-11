@@ -14,7 +14,7 @@
 @import url(../blocks/popup/__button/popup__button.css);
 @import url(../blocks/popup/__container/_img/popup__container_img.css);
 @import url(../blocks/popup/__image-view/popup__image-view.css);
-@import url(../blocks/popup/__title/_img/popup__title_img.css);
+@import url(../blocks/popup/__caption/popup__caption.css);
 @import url(../blocks/popup/__button/popup__button.css);
 @import url(../blocks/popup/__close-icon/_img/popup__close-icon_img.css);
 @import url(../blocks/header/header.css);

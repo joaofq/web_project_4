@@ -13,7 +13,7 @@ const addButton = document.querySelector(".addbutton");
 const popupAddCard = document.querySelector(".popup-addcard");
 const inputCardTitle = document.querySelector(".popup__input-title");
 const inputCardLink = document.querySelector(".popup__input-link");
-const popupImage = document.querySelector(".popup__image");
+const popupImage = document.querySelector(".popup_image");
 
 //1. GERA OS 6 CARDS INICIAIS
 
@@ -87,7 +87,7 @@ const callPopupImage = function () {
       const imageView = document.querySelector(".popup__image-view");
       imageView.src = item.src;
       imageView.alt = item.alt;
-      const imageTitle = document.querySelector(".popup__title_img");
+      const imageTitle = document.querySelector(".popup__caption");
       imageTitle.textContent = item.alt;
       popupImage.classList.add("popup_opened");
     });
