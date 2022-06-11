@@ -45,6 +45,7 @@ const initialCards = [
 ];
 
 function callInitialCards() {
+  elements.innerHTML = "";
   initialCards.map(function (item) {
     let cardElement = cardTemplate.querySelector(".card").cloneNode(true);
     cardElement.querySelector(".card__text").textContent = item.name;
@@ -136,7 +137,6 @@ function addCard() {
   inputCardTitle.value = "";
   event.preventDefault();
   callPopupImage();
-  elements.innerHTML = "";
   callInitialCards();
 }
 
@@ -159,7 +159,6 @@ function callDeleteButton() {
     item.addEventListener("click", function (evt) {
       evt.target.parentElement.remove();
       initialCards.splice(index, 1);
-      elements.innerHTML = "";
       callInitialCards();
     });
   });
