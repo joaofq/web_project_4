@@ -18,6 +18,6 @@ Este é um projeto de uma página, elaborado durante o curso de desenvolvimento 
 
 * [Link para o projeto no Figma - Sprint 4](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
 
-* [Link para o projeto no Figma - Sprint 5] (https://www.figma.com/file/HD3sjY52cfmedXVdlxkhZ0/WEB%2C-Sprint-5)
+* [Link para o projeto no Figma - Sprint 5](https://www.figma.com/file/HD3sjY52cfmedXVdlxkhZ0/WEB%2C-Sprint-5)
 
 * [Link para visualização do projeto no Github Pages](https://joaofq.github.io/web_project_4/)
