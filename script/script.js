@@ -141,47 +141,34 @@ function addCard() {
 
 //5. BOTÃO CURTIR
 
-//------> Quando adiciono novos cartões, a função deixa de funcionar para os antigos.
+//******** */ Quando adiciono novos cartões, a função deixa de funcionar para os antigos.
 
 const callLikeButton = function () {
-  likeButton = document.querySelectorAll(".likebutton");
+  const likeButton = document.querySelectorAll(".likebutton");
   likeButton.forEach(function (item) {
     item.addEventListener("click", function (evt) {
       item.classList.toggle("likebutton_active");
-      console.log("Evento: " + evt + "item: " + item);
     });
   });
 };
 
-//6. BOTÃO DELETAR / Não está funcionando apagar da lista. Está apagando + de 1.
+//6. BOTÃO DELETAR /
+//Não está funcionando apagar da lista. Está apagando + de 1.
 
-const callDeleteButton = function () {
-  deleteButton = document.querySelectorAll(".card__trash");
-  deleteButton.forEach(function (item, index) {
+function callDeleteButton() {
+  const trashButton = document.querySelectorAll(".card__trash");
+  trashButton.forEach(function (item, index) {
     item.addEventListener("click", function (evt) {
       evt.target.parentElement.remove();
-      reset(index);
-      console.log("Deletando o index " + index);
     });
-  });
-};
-
-function reset(i) {
-  initialCards.map(function (item) {
-    console.log("resete pegando o item " + i);
-    return initialCards.splice(i, 1);
   });
 }
 
-/*const callDeleteButton = function () {
-  deleteButton = document.querySelectorAll(".card__trash");
-  deleteButton.forEach(function (item, index) {
-    item.addEventListener("click", function (evt) {
-      evt.target.parentElement.remove();
-      return initialCards.splice(index, 1);
-    });
-  });
-};
-*/
+/*
+function reset(i) {
+  return initialCards.splice(i, 1);
+  console.log("removendo o item " + i);
+}*/
+
 callInitialCards();
 callDeleteButton();
