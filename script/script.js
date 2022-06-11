@@ -47,7 +47,7 @@ const initialCards = [
 function callInitialCards() {
   elements.innerHTML = "";
   initialCards.map(function (item) {
-    let cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+    const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
     cardElement.querySelector(".card__text").textContent = item.name;
     cardElement.querySelector(".card__image").src = item.link;
     cardElement.querySelector(".card__image").alt = item.name;
@@ -120,13 +120,13 @@ saveButtonAddCard.addEventListener("click", addCard);
 //4.2. Salva dados do AddCards e inclui na lista
 
 function addCard() {
-  let newCard = {
+  const newCard = {
     name: inputCardTitle.value,
     link: inputCardLink.value,
   };
   initialCards.unshift(newCard);
 
-  let cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
   cardElement.querySelector(".card__text").textContent = newCard.name;
   cardElement.querySelector(".card__image").src = newCard.link;
   cardElement.querySelector(".card__image").alt = newCard.name;
