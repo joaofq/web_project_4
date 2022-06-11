@@ -54,6 +54,7 @@ function callInitialCards() {
   });
   callLikeButton();
   callPopupImage();
+  callDeleteButton();
 }
 
 //2 ABERTURA DE POPUPS
@@ -134,41 +135,34 @@ function addCard() {
   inputCardLink.value = "";
   inputCardTitle.value = "";
   event.preventDefault();
-  callDeleteButton();
   callPopupImage();
-  callLikeButton();
+  elements.innerHTML = "";
+  callInitialCards();
 }
 
 //5. BOTÃO CURTIR
 
-//******** */ Quando adiciono novos cartões, a função deixa de funcionar para os antigos.
-
-const callLikeButton = function () {
+function callLikeButton() {
   const likeButton = document.querySelectorAll(".likebutton");
   likeButton.forEach(function (item) {
     item.addEventListener("click", function (evt) {
       item.classList.toggle("likebutton_active");
     });
   });
-};
+}
 
 //6. BOTÃO DELETAR /
-//Não está funcionando apagar da lista. Está apagando + de 1.
 
 function callDeleteButton() {
   const trashButton = document.querySelectorAll(".card__trash");
   trashButton.forEach(function (item, index) {
     item.addEventListener("click", function (evt) {
       evt.target.parentElement.remove();
+      initialCards.splice(index, 1);
+      elements.innerHTML = "";
+      callInitialCards();
     });
   });
 }
 
-/*
-function reset(i) {
-  return initialCards.splice(i, 1);
-  console.log("removendo o item " + i);
-}*/
-
 callInitialCards();
-callDeleteButton();
