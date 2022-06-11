@@ -13,74 +13,9 @@ const addButton = document.querySelector(".addbutton");
 const popupAddCard = document.querySelector(".popup-addcard");
 const inputCardTitle = document.querySelector(".popup__input-title");
 const inputCardLink = document.querySelector(".popup__input-link");
+const popupImage = document.querySelector(".popup__image");
 
-//1 ABERTURA DE POPUPS
-
-//1.2. Popup edit profile - puxa dados iniciais
-
-function callPopupEditProfile() {
-  popupEditProfile.classList.add("popup_opened");
-  inputName.value = profileName.textContent;
-  inputAbout.value = profileDescription.textContent;
-}
-
-editButton.addEventListener("click", callPopupEditProfile); //Jogar pro final
-
-//1.3. Popup addCard
-
-function callPopupAddCard() {
-  popupAddCard.classList.add("popup_opened");
-}
-
-addButton.addEventListener("click", callPopupAddCard); //Jogar pro final
-
-//2 FECHA AMBOS OS POPUPS
-
-closeButton.forEach(function (item) {
-  item.addEventListener("click", function closePopup() {
-    popupAddCard.classList.remove("popup_opened");
-    popupEditProfile.classList.remove("popup_opened");
-  });
-});
-
-//3 SALVA OS POPUPS
-
-//3.1. Salva dados do Edit Profile
-
-saveButtonEdit.addEventListener("click", function (evt) {
-  profileName.textContent = inputName.value;
-  profileDescription.textContent = inputAbout.value;
-  popupEditProfile.classList.remove("popup_opened");
-  evt.preventDefault();
-});
-
-saveButtonAddCard.addEventListener("click", addCard);
-
-//3.1. Salva dados do AddCards
-//---> Vamos tentar dar push na lista CARDS INICIAIS.
-
-function addCard() {
-  let newCard = {
-    name: inputCardTitle.value,
-    link: inputCardLink.value,
-  };
-  initialCards.unshift(newCard);
-
-  let cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-  cardElement.querySelector(".card__text").textContent = newCard.name;
-  cardElement.querySelector(".card__image").src = newCard.link;
-  cardElement.querySelector(".card__image").alt = "Image of " + newCard.name;
-  elements.prepend(cardElement);
-
-  popupAddCard.classList.remove("popup_opened");
-  inputCardLink.value = "";
-  inputCardTitle.value = "";
-  event.preventDefault();
-  callLikeButton();
-  callDeleteButton();
-}
-
-//4. GERA OS 6 CARDS INICIAIS
+//1. GERA OS 6 CARDS INICIAIS
 
 const initialCards = [
   {
@@ -114,10 +49,95 @@ function callInitialCards() {
     let cardElement = cardTemplate.querySelector(".card").cloneNode(true);
     cardElement.querySelector(".card__text").textContent = item.name;
     cardElement.querySelector(".card__image").src = item.link;
-    cardElement.querySelector(".card__image").alt = "Image of " + item.name;
+    cardElement.querySelector(".card__image").alt = item.name;
     return elements.append(cardElement);
   });
-} //jogar para o final
+  callLikeButton();
+  callPopupImage();
+}
+
+//2 ABERTURA DE POPUPS
+
+//2.1. Popup edit profile - puxa dados iniciais
+
+function callPopupEditProfile() {
+  popupEditProfile.classList.add("popup_opened");
+  inputName.value = profileName.textContent;
+  inputAbout.value = profileDescription.textContent;
+}
+
+editButton.addEventListener("click", callPopupEditProfile);
+
+//2.2. Popup addCard
+
+function callPopupAddCard() {
+  popupAddCard.classList.add("popup_opened");
+}
+
+addButton.addEventListener("click", callPopupAddCard); //Jogar pro final
+
+//2.3. Popup Image
+
+const callPopupImage = function () {
+  const images = document.querySelectorAll(".card__image");
+  images.forEach(function (item) {
+    item.addEventListener("click", function () {
+      const imageView = document.querySelector(".popup__image-view");
+      imageView.src = item.src;
+      imageView.alt = item.alt;
+      const imageTitle = document.querySelector(".popup__title_img");
+      imageTitle.textContent = item.alt;
+      popupImage.classList.add("popup_opened");
+    });
+  });
+};
+
+//3 FECHA OS POPUPS
+
+closeButton.forEach(function (item) {
+  item.addEventListener("click", function closePopup() {
+    popupAddCard.classList.remove("popup_opened");
+    popupEditProfile.classList.remove("popup_opened");
+    popupImage.classList.remove("popup_opened");
+  });
+});
+
+//4 SALVA OS POPUPS
+
+//4.1. Salva dados do Edit Profile
+
+saveButtonEdit.addEventListener("click", function (evt) {
+  profileName.textContent = inputName.value;
+  profileDescription.textContent = inputAbout.value;
+  popupEditProfile.classList.remove("popup_opened");
+  evt.preventDefault();
+});
+
+saveButtonAddCard.addEventListener("click", addCard);
+
+//4.2. Salva dados do AddCards e inclui na lista
+
+function addCard() {
+  let newCard = {
+    name: inputCardTitle.value,
+    link: inputCardLink.value,
+  };
+  initialCards.unshift(newCard);
+
+  let cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+  cardElement.querySelector(".card__text").textContent = newCard.name;
+  cardElement.querySelector(".card__image").src = newCard.link;
+  cardElement.querySelector(".card__image").alt = newCard.name;
+  elements.prepend(cardElement);
+
+  popupAddCard.classList.remove("popup_opened");
+  inputCardLink.value = "";
+  inputCardTitle.value = "";
+  event.preventDefault();
+  callDeleteButton();
+  callPopupImage();
+  callLikeButton();
+}
 
 //5. BOTÃO CURTIR
 
@@ -127,25 +147,41 @@ const callLikeButton = function () {
   likeButton = document.querySelectorAll(".likebutton");
   likeButton.forEach(function (item) {
     item.addEventListener("click", function (evt) {
-      evt.target.classList.toggle("likebutton_active");
+      item.classList.toggle("likebutton_active");
       console.log("Evento: " + evt + "item: " + item);
     });
   });
 };
 
-//6. BOTÃO DELETAR
+//6. BOTÃO DELETAR / Não está funcionando apagar da lista. Está apagando + de 1.
 
 const callDeleteButton = function () {
   deleteButton = document.querySelectorAll(".card__trash");
-  deleteButton.forEach(function (item) {
+  deleteButton.forEach(function (item, index) {
     item.addEventListener("click", function (evt) {
       evt.target.parentElement.remove();
+      reset(index);
+      console.log("Deletando o index " + index);
     });
   });
 };
 
-callInitialCards();
-callLikeButton();
-callDeleteButton();
+function reset(i) {
+  initialCards.map(function (item) {
+    console.log("resete pegando o item " + i);
+    return initialCards.splice(i, 1);
+  });
+}
 
-//7. AUMENTAR IMAGENS
+/*const callDeleteButton = function () {
+  deleteButton = document.querySelectorAll(".card__trash");
+  deleteButton.forEach(function (item, index) {
+    item.addEventListener("click", function (evt) {
+      evt.target.parentElement.remove();
+      return initialCards.splice(index, 1);
+    });
+  });
+};
+*/
+callInitialCards();
+callDeleteButton();
