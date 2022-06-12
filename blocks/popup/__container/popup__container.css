@@ -12,6 +12,7 @@
   padding-bottom: 35.5px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 @media screen and (max-width: 600px) {
