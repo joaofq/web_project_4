@@ -80,19 +80,21 @@ addButton.addEventListener("click", callPopupAddCard); //Jogar pro final
 
 //2.3. Popup Image
 
-const callPopupImage = function () {
+function callPopupImage() {
   const images = document.querySelectorAll(".card__image");
   images.forEach(function (item) {
-    item.addEventListener("click", function () {
-      const imageView = document.querySelector(".popup__image-view");
-      imageView.src = item.src;
-      imageView.alt = item.alt;
-      const imageTitle = document.querySelector(".popup__caption");
-      imageTitle.textContent = item.alt;
-      popupImage.classList.add("popup_opened");
-    });
+    item.addEventListener("click", createImage);
   });
-};
+}
+
+function createImage(evt) {
+  const imageView = document.querySelector(".popup__image-view");
+  imageView.src = evt.target.src;
+  imageView.alt = evt.target.alt;
+  const imageTitle = document.querySelector(".popup__caption");
+  imageTitle.textContent = evt.target.alt;
+  popupImage.classList.add("popup_opened");
+}
 
 //3 FECHA OS POPUPS
 
