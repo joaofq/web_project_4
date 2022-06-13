@@ -83,11 +83,11 @@ addButton.addEventListener("click", callPopupAddCard); //Jogar pro final
 function callPopupImage() {
   const images = document.querySelectorAll(".card__image");
   images.forEach(function (item) {
-    item.addEventListener("click", createImage);
+    item.addEventListener("click", createPopupImage);
   });
 }
 
-function createImage(evt) {
+function createPopupImage(evt) {
   const imageView = document.querySelector(".popup__image-view");
   imageView.src = evt.target.src;
   imageView.alt = evt.target.alt;
@@ -133,13 +133,16 @@ function addCard() {
   cardElement.querySelector(".card__image").src = newCard.link;
   cardElement.querySelector(".card__image").alt = newCard.name;
   elements.prepend(cardElement);
+  callPopupImage();
+  callInitialCards();
+  clearAddCardPopup();
+}
 
+function clearAddCardPopup() {
   popupAddCard.classList.remove("popup_opened");
   inputCardLink.value = "";
   inputCardTitle.value = "";
   event.preventDefault();
-  callPopupImage();
-  callInitialCards();
 }
 
 //5. BOTÃO CURTIR
