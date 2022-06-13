@@ -1,11 +1,11 @@
 const editButton = document.querySelector(".editbutton");
-const closeButton = document.querySelectorAll(".popup__close-icon");
+const closePopup = document.querySelectorAll(".popup__close-icon");
 const popupEditProfile = document.querySelector(".popup-editprofile");
 const inputName = document.querySelector(".popup__input-name");
 const inputAbout = document.querySelector(".popup__input-about");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
-const saveButtonEdit = document.querySelector(".popup__button-edit");
+const editProfile = document.querySelector(".popup__button-edit");
 const saveButtonAddCard = document.querySelector(".popup__button-addcard");
 const cardTemplate = document.querySelector(".cardTemplate").content;
 const elements = document.querySelector(".elements");
@@ -55,7 +55,7 @@ function callInitialCards() {
   });
   callLikeButton();
   callPopupImage();
-  callDeleteButton();
+  deletCardButton();
 }
 
 //2 ABERTURA DE POPUPS
@@ -96,8 +96,8 @@ const callPopupImage = function () {
 
 //3 FECHA OS POPUPS
 
-closeButton.forEach(function (item) {
-  item.addEventListener("click", function closePopup() {
+closePopup.forEach(function (item) {
+  item.addEventListener("click", function () {
     popupAddCard.classList.remove("popup_opened");
     popupEditProfile.classList.remove("popup_opened");
     popupImage.classList.remove("popup_opened");
@@ -108,7 +108,7 @@ closeButton.forEach(function (item) {
 
 //4.1. Salva dados do Edit Profile
 
-saveButtonEdit.addEventListener("click", function (evt) {
+editProfile.addEventListener("click", function (evt) {
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputAbout.value;
   popupEditProfile.classList.remove("popup_opened");
@@ -153,7 +153,7 @@ function callLikeButton() {
 
 //6. BOTÃO DELETAR /
 
-function callDeleteButton() {
+function deletCardButton() {
   const trashButton = document.querySelectorAll(".card__trash");
   trashButton.forEach(function (item, index) {
     item.addEventListener("click", function (evt) {
