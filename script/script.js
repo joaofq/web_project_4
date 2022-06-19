@@ -1,18 +1,18 @@
 const editButton = document.querySelector(".editbutton");
 const closePopup = document.querySelectorAll(".popup__close-icon");
 const popupEditProfile = document.querySelector(".popup-editprofile");
-const inputName = document.querySelector(".popup__input-name");
-const inputAbout = document.querySelector(".popup__input-about");
+const formEditProfile = document.forms.formEditProfile;
+const formAddCard = document.forms.formAddCard;
+const inputName = formEditProfile.elements.name;
+const inputAbout = formEditProfile.elements.about;
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
-const saveButtonEditProfile = document.querySelector(".popup__button-edit");
-const saveButtonAddCard = document.querySelector(".popup__button-addcard");
 const cardTemplate = document.querySelector(".cardTemplate").content;
 const elements = document.querySelector(".elements");
 const addButton = document.querySelector(".addbutton");
 const popupAddCard = document.querySelector(".popup-addcard");
-const inputCardTitle = document.querySelector(".popup__input-title");
-const inputCardLink = document.querySelector(".popup__input-link");
+const inputCardTitle = formAddCard.elements.title;
+const inputCardLink = formAddCard.elements.link;
 const popupImage = document.querySelector(".popup_image");
 
 //1. GERA OS 6 CARDS INICIAIS
@@ -110,7 +110,7 @@ closePopup.forEach(function (item) {
 
 //4.1. Salva dados do Edit Profile
 
-saveButtonEditProfile.addEventListener("click", function (evt) {
+formEditProfile.addEventListener("submit", function (evt) {
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputAbout.value;
   popupEditProfile.classList.remove("popup_opened");
@@ -119,9 +119,9 @@ saveButtonEditProfile.addEventListener("click", function (evt) {
 
 //4.2. Salva dados do AddCards e inclui na lista
 
-saveButtonAddCard.addEventListener("click", addCard);
+formAddCard.addEventListener("submit", addCard);
 
-function addCard() {
+function addCard(evt) {
   const newCard = {
     name: inputCardTitle.value,
     link: inputCardLink.value,
@@ -129,6 +129,7 @@ function addCard() {
   initialCards.unshift(newCard);
   callInitialCards();
   clearAddCardPopup();
+  evt.preventDefault();
 }
 
 function clearAddCardPopup() {
