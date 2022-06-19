@@ -134,8 +134,7 @@ function addCard(evt) {
 
 function clearAddCardPopup() {
   popupAddCard.classList.remove("popup_opened");
-  inputCardLink.value = "";
-  inputCardTitle.value = "";
+  formAddCard.reset();
 }
 
 //5. BOTÃO CURTIR
