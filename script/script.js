@@ -5,7 +5,7 @@ const inputName = document.querySelector(".popup__input-name");
 const inputAbout = document.querySelector(".popup__input-about");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
-const editProfile = document.querySelector(".popup__button-edit");
+const saveButtonEditProfile = document.querySelector(".popup__button-edit");
 const saveButtonAddCard = document.querySelector(".popup__button-addcard");
 const cardTemplate = document.querySelector(".cardTemplate").content;
 const elements = document.querySelector(".elements");
@@ -76,7 +76,7 @@ function callPopupAddCard() {
   popupAddCard.classList.add("popup_opened");
 }
 
-addButton.addEventListener("click", callPopupAddCard); //Jogar pro final
+addButton.addEventListener("click", callPopupAddCard);
 
 //2.3. Popup Image
 
@@ -110,7 +110,7 @@ closePopup.forEach(function (item) {
 
 //4.1. Salva dados do Edit Profile
 
-editProfile.addEventListener("click", function (evt) {
+saveButtonEditProfile.addEventListener("click", function (evt) {
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputAbout.value;
   popupEditProfile.classList.remove("popup_opened");
@@ -127,13 +127,6 @@ function addCard() {
     link: inputCardLink.value,
   };
   initialCards.unshift(newCard);
-
-  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-  cardElement.querySelector(".card__text").textContent = newCard.name;
-  cardElement.querySelector(".card__image").src = newCard.link;
-  cardElement.querySelector(".card__image").alt = newCard.name;
-  elements.prepend(cardElement);
-  callPopupImage();
   callInitialCards();
   clearAddCardPopup();
 }
@@ -142,7 +135,6 @@ function clearAddCardPopup() {
   popupAddCard.classList.remove("popup_opened");
   inputCardLink.value = "";
   inputCardTitle.value = "";
-  event.preventDefault();
 }
 
 //5. BOTÃO CURTIR
