@@ -117,9 +117,9 @@ saveButtonEditProfile.addEventListener("click", function (evt) {
   evt.preventDefault();
 });
 
-saveButtonAddCard.addEventListener("click", addCard);
-
 //4.2. Salva dados do AddCards e inclui na lista
+
+saveButtonAddCard.addEventListener("click", addCard);
 
 function addCard() {
   const newCard = {
