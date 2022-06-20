@@ -115,6 +115,11 @@ popup.forEach(function (item) {
       closePopup(item);
     }
   });
+  document.addEventListener("keydown", function (evt) {
+    if (item.classList.contains("popup_opened") && evt.key === "Escape") {
+      closePopup(item);
+    }
+  });
 });
 
 //4 SALVA OS POPUPS
