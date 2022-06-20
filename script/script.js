@@ -100,19 +100,24 @@ function createPopupImage(evt) {
 //3 FECHA OS POPUPS
 
 closePopupIcon.forEach(function (item) {
-  item.addEventListener("click", closePopup);
+  item.addEventListener("click", function () {
+    closePopup(item.closest(".popup"));
+  });
 });
 
-function closePopup() {
-  popupAddCard.classList.remove("popup_opened");
-  popupEditProfile.classList.remove("popup_opened");
-  popupImage.classList.remove("popup_opened");
+function closePopup(item) {
+  item.classList.remove("popup_opened");
 }
 
 popup.forEach(function (item) {
   item.addEventListener("click", function (evt) {
     if (!evt.target.closest(".popup__container")) {
-      closePopup();
+      closePopup(item);
+    }
+  });
+  document.addEventListener("keydown", function (evt) {
+    if (item.classList.contains("popup_opened") && evt.key === "Escape") {
+      closePopup(item);
     }
   });
 });
@@ -124,7 +129,7 @@ popup.forEach(function (item) {
 formEditProfile.addEventListener("submit", function (evt) {
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputAbout.value;
-  popupEditProfile.classList.remove("popup_opened"); //AQUI CLOSEPOPUP
+  closePopup(popupEditProfile);
   evt.preventDefault();
 });
 
@@ -144,7 +149,7 @@ function addCard(evt) {
 }
 
 function clearAddCardPopup() {
-  popupAddCard.classList.remove("popup_opened"); //AQUI CLOSEPOPUP
+  closePopup(popupAddCard);
   formAddCard.reset();
 }
 
