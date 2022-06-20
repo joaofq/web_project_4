@@ -1,5 +1,6 @@
 const editButton = document.querySelector(".editbutton");
-const closePopup = document.querySelectorAll(".popup__close-icon");
+const popup = document.querySelectorAll(".popup");
+const closePopupIcon = document.querySelectorAll(".popup__close-icon");
 const popupEditProfile = document.querySelector(".popup-editprofile");
 const formEditProfile = document.forms.formEditProfile;
 const formAddCard = document.forms.formAddCard;
@@ -98,11 +99,21 @@ function createPopupImage(evt) {
 
 //3 FECHA OS POPUPS
 
-closePopup.forEach(function (item) {
-  item.addEventListener("click", function () {
-    popupAddCard.classList.remove("popup_opened");
-    popupEditProfile.classList.remove("popup_opened");
-    popupImage.classList.remove("popup_opened");
+closePopupIcon.forEach(function (item) {
+  item.addEventListener("click", closePopup);
+});
+
+function closePopup() {
+  popupAddCard.classList.remove("popup_opened");
+  popupEditProfile.classList.remove("popup_opened");
+  popupImage.classList.remove("popup_opened");
+}
+
+popup.forEach(function (item) {
+  item.addEventListener("click", function (evt) {
+    if (!evt.target.closest(".popup__container")) {
+      closePopup();
+    }
   });
 });
 
@@ -113,7 +124,7 @@ closePopup.forEach(function (item) {
 formEditProfile.addEventListener("submit", function (evt) {
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputAbout.value;
-  popupEditProfile.classList.remove("popup_opened");
+  popupEditProfile.classList.remove("popup_opened"); //AQUI CLOSEPOPUP
   evt.preventDefault();
 });
 
@@ -133,7 +144,7 @@ function addCard(evt) {
 }
 
 function clearAddCardPopup() {
-  popupAddCard.classList.remove("popup_opened");
+  popupAddCard.classList.remove("popup_opened"); //AQUI CLOSEPOPUP
   formAddCard.reset();
 }
 
