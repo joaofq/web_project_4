@@ -18,21 +18,25 @@
   <main class="main">
     <!-- Popup Profile edit-->
     <div class="popup popup-editprofile">
-      <form name="formEditProfile" class="popup__container">
+      <form name="formEditProfile" class="popup__container popup__form" novalidate>
         <img src="./images/close-icon.svg" class="popup__close-icon" alt="Close Icon">
         <label class="popup__title">Editar perfil</label>
-        <input type="text" name="name" placeholder="Nome" class="popup__input popup__input-name" minlength="2" maxlength="40" required>
-        <input type="text" name="about" placeholder="Sobre mim" class="popup__input popup__input-about" minlength="2" maxlength="200" required>
+        <input type="text" id="name-input" name="name" placeholder="Nome" class="popup__input popup__input-name" minlength="2" maxlength="40" required>
+        <span class="name-input-error popup__input_type_error"></span>
+        <input type="text" id="about-input" name="about" placeholder="Sobre mim" class="popup__input popup__input-about" minlength="2" maxlength="200" required>
+        <span class="about-input-error popup__input_type_error"></span>
         <button type="submit" class="popup__button popup__button-edit" name="button">Salvar</button>
       </form>
     </div>
     <!-- Popup Add cards-->
     <div class="popup popup-addcard">
-      <form name="formAddCard" class="popup__container">
+      <form name="formAddCard" class="popup__container popup__form" novalidate>
         <img src="./images/close-icon.svg" class="popup__close-icon" alt="Close Icon">
         <label class="popup__title">Novo local</label>
-        <input type="text" name="title" placeholder="Título" class="popup__input popup__input-title" minlength="2" maxlength="30" required>
-        <input type="url" name="link" placeholder="Link da imagem" class="popup__input popup__input-link" required>
+        <input type="text" id="title-input" name="title" placeholder="Título" class="popup__input popup__input-title" minlength="2" maxlength="30" required>
+        <span class="title-input-error popup__input_type_error"></span>
+        <input type="url" id="link-input" name="link" placeholder="Link da imagem" class="popup__input popup__input-link" required>
+        <span class="link-input-error popup__input_type_error"></span>
         <button type="submit" class="popup__button popup__button-addcard" name="button">Salvar</button>
       </form>
     </div>
