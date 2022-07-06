@@ -54,9 +54,9 @@ function callInitialCards() {
     cardElement.querySelector(".card__image").alt = item.name;
     return elements.append(cardElement);
   });
-  callLikeButton();
+  changeLikeStatus();
   callPopupImage();
-  deletCardButton();
+  deleteCardButton();
 }
 
 //2 ABERTURA DE POPUPS
@@ -159,7 +159,7 @@ function clearAddCardPopup() {
 
 //5. BOTÃO CURTIR
 
-function callLikeButton() {
+function changeLikeStatus() {
   const likeButton = document.querySelectorAll(".likebutton");
   likeButton.forEach(function (item) {
     item.addEventListener("click", function (evt) {
@@ -170,7 +170,7 @@ function callLikeButton() {
 
 //6. BOTÃO DELETAR /
 
-function deletCardButton() {
+function deleteCardButton() {
   const trashButton = document.querySelectorAll(".card__trash");
   trashButton.forEach(function (item, index) {
     item.addEventListener("click", function (evt) {
