@@ -107,6 +107,7 @@ closePopupIcon.forEach(function (item) {
 
 function closePopup(item) {
   item.classList.remove("popup_opened");
+  formAddCard.reset();
 }
 
 popup.forEach(function (item) {
@@ -115,6 +116,9 @@ popup.forEach(function (item) {
       closePopup(item);
     }
   });
+});
+
+popup.forEach(function (item) {
   document.addEventListener("keydown", function (evt) {
     if (item.classList.contains("popup_opened") && evt.key === "Escape") {
       closePopup(item);
