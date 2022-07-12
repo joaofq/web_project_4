@@ -1,9 +1,5 @@
 import Card from "./Card.js";
 
-const teste = new Card("textooo", "linkkkk", ".cardTemplate");
-
-console.log(teste._generateCard());
-
 const editButton = document.querySelector(".editbutton");
 const popup = document.querySelectorAll(".popup");
 const closePopupIcon = document.querySelectorAll(".popup__close-icon");
@@ -14,17 +10,15 @@ const inputName = formEditProfile.elements.name;
 const inputAbout = formEditProfile.elements.about;
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
-const cardTemplate = document.querySelector(".cardTemplate").content;
 const elements = document.querySelector(".elements");
 const addButton = document.querySelector(".addbutton");
 const popupAddCard = document.querySelector(".popup-addcard");
 const inputCardTitle = formAddCard.elements.title;
 const inputCardLink = formAddCard.elements.link;
-const popupImage = document.querySelector(".popup_image");
 
 //1. GERA OS 6 CARDS INICIAIS
 
-const initialCards = [
+export const initialCards = [
   {
     name: "Vale de Yosemite",
     link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
@@ -50,19 +44,12 @@ const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
-
-function callInitialCards() {
+function renderCards() {
   elements.innerHTML = "";
-  initialCards.map(function (item) {
-    const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-    cardElement.querySelector(".card__text").textContent = item.name;
-    cardElement.querySelector(".card__image").src = item.link;
-    cardElement.querySelector(".card__image").alt = item.name;
-    return elements.append(cardElement);
+  initialCards.map(function (item, index) {
+    const newCard = new Card(item.name, item.link, ".cardTemplate", index);
+    elements.append(newCard.generateCard());
   });
-  changeLikeStatus();
-  callPopupImage();
-  deleteCardButton();
 }
 
 //2 ABERTURA DE POPUPS
@@ -86,22 +73,6 @@ function callPopupAddCard() {
 addButton.addEventListener("click", callPopupAddCard);
 
 //2.3. Popup Image
-
-function callPopupImage() {
-  const images = document.querySelectorAll(".card__image");
-  images.forEach(function (item) {
-    item.addEventListener("click", createPopupImage);
-  });
-}
-
-function createPopupImage(evt) {
-  const imageView = document.querySelector(".popup__image-view");
-  imageView.src = evt.target.src;
-  imageView.alt = evt.target.alt;
-  const imageTitle = document.querySelector(".popup__caption");
-  imageTitle.textContent = evt.target.alt;
-  popupImage.classList.add("popup_opened");
-}
 
 //3 FECHA OS POPUPS
 
@@ -153,7 +124,7 @@ function addCard(evt) {
     link: inputCardLink.value,
   };
   initialCards.unshift(newCard);
-  callInitialCards();
+  renderCards();
   clearAddCardPopup();
   evt.preventDefault();
 }
@@ -163,28 +134,4 @@ function clearAddCardPopup() {
   formAddCard.reset();
 }
 
-//5. BOTÃO CURTIR
-
-function changeLikeStatus() {
-  const likeButton = document.querySelectorAll(".likebutton");
-  likeButton.forEach(function (item) {
-    item.addEventListener("click", function (evt) {
-      item.classList.toggle("likebutton_active");
-    });
-  });
-}
-
-//6. BOTÃO DELETAR /
-
-function deleteCardButton() {
-  const trashButton = document.querySelectorAll(".card__trash");
-  trashButton.forEach(function (item, index) {
-    item.addEventListener("click", function (evt) {
-      evt.target.parentElement.remove();
-      initialCards.splice(index, 1);
-      callInitialCards();
-    });
-  });
-}
-
-callInitialCards();
+renderCards();

@@ -1,16 +1,11 @@
-/*
-Crie a classe Card, que cria um cartão com texto e um link de imagem, de acordo com os seguintes requisitos:
-Utiliza os dados do cartão, texto e link para a imagem, e um seletor de elementos de template como parâmetros para o construtor.
-Possui métodos privados para trabalhar com marcação e adicionar ouvintes de eventos.
-Possui métodos privados para cada manipulador de eventos.
-Possui um método público que devolve o elemento do cartão totalmente funcional, preenchido com dados.
-Crie uma instância de classe Card para cada cartão.*/
+import { initialCards } from "./script.js";
 
 export default class Card {
-  constructor(text, link, templateSelector) {
+  constructor(text, link, templateSelector, index) {
     this._text = text;
     this._link = link;
     this._templateSelector = templateSelector;
+    this._index = index;
   }
 
   _getTemplate() {
@@ -18,17 +13,52 @@ export default class Card {
       .querySelector(this._templateSelector)
       .content.querySelector(".card")
       .cloneNode(true);
-
     this._element = cardElement;
   }
 
-  _generateCard() {
+  _setListners() {
+    //deleteCard
+    this._element
+      .querySelector(".card__trash")
+      .addEventListener("click", this._deleteCard);
+
+    //toggleLike
+
+    this._element
+      .querySelector(".likebutton")
+      .addEventListener("click", this._toggleLike);
+
+    //callPopupImage
+
+    this._element
+      .querySelector(".card__image")
+      .addEventListener("click", this._callPopupImage);
+  }
+
+  _deleteCard(evt) {
+    evt.target.parentElement.remove();
+    initialCards.splice(this._index, 1);
+  }
+
+  _toggleLike() {
+    this.classList.toggle("likebutton_active");
+  }
+
+  _callPopupImage(evt) {
+    const imageView = document.querySelector(".popup__image-view");
+    imageView.src = evt.target.src;
+    imageView.alt = evt.target.alt;
+    const imageTitle = document.querySelector(".popup__caption");
+    imageTitle.textContent = evt.target.alt;
+    document.querySelector(".popup_image").classList.add("popup_opened");
+  }
+
+  generateCard() {
     this._getTemplate();
+    this._setListners();
     this._element.querySelector(".card__text").textContent = this._text;
     this._element.querySelector(".card__image").src = this._link;
     this._element.querySelector(".card__image").alt = this._text;
     return this._element;
   }
-
-  _setListners() {}
 }
