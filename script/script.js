@@ -1,3 +1,9 @@
+import Card from "./Card.js";
+
+const teste = new Card("textooo", "linkkkk", ".cardTemplate");
+
+console.log(teste._generateCard());
+
 const editButton = document.querySelector(".editbutton");
 const popup = document.querySelectorAll(".popup");
 const closePopupIcon = document.querySelectorAll(".popup__close-icon");
