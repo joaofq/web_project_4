@@ -1,5 +1,3 @@
-//Copiei do MalconX
-
 export default class FormValidator {
   constructor(configObject, formElement) {
     this._inputSelector = configObject.inputSelector;
@@ -10,29 +8,29 @@ export default class FormValidator {
     this._form = formElement;
   }
 
-  isValid(formElement, inputElement) {
+  _isValid(formElement, inputElement) {
     if (!inputElement.validity.valid) {
-      this.showInputError(inputElement, inputElement.validationMessage);
+      this._showInputError(inputElement, inputElement.validationMessage);
     } else {
-      this.hideInputError(inputElement);
+      this._hideInputError(inputElement);
     }
   }
 
-  showInputError(inputElement, errorMessage) {
+  _showInputError(inputElement, errorMessage) {
     const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this.errorClass);
   }
 
-  hideInputError(inputElement) {
+  _hideInputError(inputElement) {
     const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClass);
     errorElement.textContent = "";
   }
 
-  setEventListeners(/*formElement*/) {
+  _setEventListeners() {
     const inputList = Array.from(
       this._form.querySelectorAll(this._inputSelector),
     );
@@ -41,7 +39,7 @@ export default class FormValidator {
 
     inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
-        this.isValid(this._form, inputElement);
+        this._isValid(this._form, inputElement);
         this.toggleButtonState(inputList, buttonElement);
       });
     });
@@ -51,17 +49,17 @@ export default class FormValidator {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
-    this.setEventListeners();
+    this._setEventListeners();
   }
 
-  hasInvalidInput(inputList) {
+  _hasInvalidInput(inputList) {
     return inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
 
   toggleButtonState(inputList, buttonElement) {
-    if (this.hasInvalidInput(inputList)) {
+    if (this._hasInvalidInput(inputList)) {
       buttonElement.classList.add(this._inactiveButtonClass);
       buttonElement.setAttribute("disabled", "");
     } else {
