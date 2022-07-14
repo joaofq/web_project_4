@@ -1,4 +1,5 @@
 import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
 
 const editButton = document.querySelector(".editbutton");
 const popup = document.querySelectorAll(".popup");
@@ -44,6 +45,7 @@ export const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
+
 function renderCards() {
   elements.innerHTML = "";
   initialCards.map(function (item, index) {
@@ -135,3 +137,22 @@ function clearAddCardPopup() {
 }
 
 renderCards();
+
+//Enable form validations
+
+const defaultConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__error",
+  errorClass: "popup__error_visible",
+};
+const formAddCardValidator = new FormValidator(defaultConfig, formAddCard);
+const formEditProfileValidator = new FormValidator(
+  defaultConfig,
+  formEditProfile,
+);
+
+formAddCardValidator.enableValidation();
+formEditProfileValidator.enableValidation();
