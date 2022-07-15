@@ -64,4 +64,16 @@ export default class FormValidator {
       buttonElement.removeAttribute("disabled", "");
     }
   }
+
+  resetValidation() {
+    const inputList = Array.from(
+      this._form.querySelectorAll(this._inputSelector),
+    );
+    const buttonElement = this._form.querySelector(this._submitButtonSelector);
+    inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
+    buttonElement.classList.add(this._inactiveButtonClass);
+    buttonElement.setAttribute("disabled", "");
+  }
 }

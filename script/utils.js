@@ -6,6 +6,8 @@ import {
   inputAbout,
   popupAddCard,
   formAddCard,
+  formAddCardValidator,
+  formEditProfileValidator,
 } from "./script.js";
 
 const editButton = document.querySelector(".editbutton");
@@ -46,6 +48,8 @@ closePopupIcon.forEach(function (item) {
 function closePopup(item) {
   item.classList.remove("popup_opened");
   formAddCard.reset();
+  formAddCardValidator.resetValidation();
+  formEditProfileValidator.resetValidation();
 }
 
 popup.forEach(function (item) {

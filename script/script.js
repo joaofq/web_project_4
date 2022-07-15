@@ -109,4 +109,6 @@ export {
   inputAbout,
   popupAddCard,
   formAddCard,
+  formAddCardValidator,
+  formEditProfileValidator,
 };
