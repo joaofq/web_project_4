@@ -35,9 +35,7 @@ function callPopupAddCard() {
 
 addButton.addEventListener("click", callPopupAddCard);
 
-//2.3. Popup Image
-
-//3 FECHA OS POPUPS
+//3 CLOSE POPUPS
 
 closePopupIcon.forEach(function (item) {
   item.addEventListener("click", function () {
