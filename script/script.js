@@ -14,7 +14,7 @@ const popupAddCard = document.querySelector(".popup-addcard");
 const inputCardTitle = formAddCard.elements.title;
 const inputCardLink = formAddCard.elements.link;
 
-//1. GERA OS 6 CARDS INICIAIS
+//1. Render cards
 
 export const initialCards = [
   {
@@ -51,9 +51,9 @@ function renderCards() {
   });
 }
 
-//4 SALVA OS POPUPS
+//4 SAVE POPUPS DATA
 
-//4.1. Salva dados do Edit Profile
+//4.1. Edit Profile
 
 formEditProfile.addEventListener("submit", function (evt) {
   saveProfileInputs();
@@ -66,7 +66,7 @@ function saveProfileInputs() {
   profileDescription.textContent = inputAbout.value;
 }
 
-//4.2. Salva dados do AddCards e inclui na lista
+//4.2. AddCards + Push initialCards list
 
 formAddCard.addEventListener("submit", addCard);
 
@@ -86,8 +86,6 @@ function clearAddCardPopup() {
   formAddCard.reset();
 }
 
-renderCards();
-
 //Enable form validations
 
 const defaultConfig = {
@@ -106,6 +104,7 @@ const formEditProfileValidator = new FormValidator(
 
 formAddCardValidator.enableValidation();
 formEditProfileValidator.enableValidation();
+renderCards();
 
 export {
   popupEditProfile,
