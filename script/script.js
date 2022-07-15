@@ -77,13 +77,8 @@ function addCard(evt) {
   };
   initialCards.unshift(newCard);
   renderCards();
-  clearAddCardPopup();
-  evt.preventDefault();
-}
-
-function clearAddCardPopup() {
   closePopup(popupAddCard);
-  formAddCard.reset();
+  evt.preventDefault();
 }
 
 //Enable form validations
