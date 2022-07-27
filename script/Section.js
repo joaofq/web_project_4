@@ -13,7 +13,7 @@ export default class Section {
     this._container = document.querySelector(containerSelector);
   }
 
-  handleRenderer() {
+  renderItems() {
     this._items.forEach((item, index) => {
       this._renderer(item, index);
     });

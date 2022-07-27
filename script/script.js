@@ -50,6 +50,7 @@ export const cardList = new Section(
     renderer: (item, index) => {
       const newCard = new Card(item.name, item.link, ".cardTemplate", index);
       const cardElement = newCard.generateCard();
+      cardList.addItem(cardElement);
     },
   },
   ".elements",
@@ -113,7 +114,7 @@ const formEditProfileValidator = new FormValidator(
 
 formAddCardValidator.enableValidation();
 formEditProfileValidator.enableValidation();
-cardList.handleRenderer();
+cardList.renderItems();
 //renderCards();
 
 export {
