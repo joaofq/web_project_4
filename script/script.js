@@ -1,6 +1,7 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import { closePopup } from "./utils.js";
+import Section from "./Section.js";
 
 const popupEditProfile = document.querySelector(".popup-editprofile");
 const formEditProfile = document.forms.formEditProfile;
@@ -43,6 +44,18 @@ export const initialCards = [
   },
 ];
 
+export const cardList = new Section(
+  {
+    items: initialCards,
+    renderer: (item, index) => {
+      const newCard = new Card(item.name, item.link, ".cardTemplate", index);
+      const cardElement = newCard.generateCard();
+    },
+  },
+  ".elements",
+);
+
+/*
 function renderCards() {
   elements.innerHTML = "";
   initialCards.map(function (item, index) {
@@ -50,6 +63,7 @@ function renderCards() {
     elements.append(newCard.generateCard());
   });
 }
+*/
 
 //4 SAVE POPUPS DATA
 
@@ -99,7 +113,8 @@ const formEditProfileValidator = new FormValidator(
 
 formAddCardValidator.enableValidation();
 formEditProfileValidator.enableValidation();
-renderCards();
+cardList.handleRenderer();
+//renderCards();
 
 export {
   popupEditProfile,
