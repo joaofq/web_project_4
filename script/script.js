@@ -91,7 +91,7 @@ function addCard(evt) {
     link: inputCardLink.value,
   };
   initialCards.unshift(newCard);
-  renderCards();
+  cardList.renderItems();
   closePopup(popupAddCard);
   evt.preventDefault();
 }

@@ -14,6 +14,7 @@ export default class Section {
   }
 
   renderItems() {
+    this._clearSection();
     this._items.forEach((item, index) => {
       this._renderer(item, index);
     });
@@ -23,5 +24,9 @@ export default class Section {
 
   addItem(element) {
     this._container.append(element);
+  }
+
+  _clearSection() {
+    this._container.innerHTML = "";
   }
 }
