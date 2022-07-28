@@ -3,6 +3,7 @@ import FormValidator from "./FormValidator.js";
 import { closePopup } from "./utils.js";
 import Section from "./Section.js";
 import Popup from "./Popup.js";
+import PopupWithImage from "./PopupWithImage.js";
 
 const popupEditProfile = document.querySelector(".popup-editprofile");
 const formEditProfile = document.forms.formEditProfile;
@@ -59,6 +60,9 @@ export const cardList = new Section(
 
 export const popup = new Popup(".popup");
 popup.setEventListeners();
+
+export const popupWithImage = new PopupWithImage(".popup_image");
+popupWithImage.setEventListeners();
 
 /*
 function renderCards() {
