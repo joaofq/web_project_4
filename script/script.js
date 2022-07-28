@@ -61,9 +61,6 @@ export const cardList = new Section(
 export const popup = new Popup(".popup");
 popup.setEventListeners();
 
-export const popupWithImage = new PopupWithImage(".popup_image");
-popupWithImage.setEventListeners();
-
 /*
 function renderCards() {
   elements.innerHTML = "";

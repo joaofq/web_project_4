@@ -1,3 +1,4 @@
+import PopupWithImage from "./PopupWithImage.js";
 import { initialCards } from "./script.js";
 
 export default class Card {
@@ -32,7 +33,9 @@ export default class Card {
 
     this._element
       .querySelector(".card__image")
-      .addEventListener("click", this._callPopupImage);
+      .addEventListener("click", (evt) => {
+        this.handleCardClick(evt);
+      });
   }
 
   _deleteCard(evt) {
@@ -44,6 +47,14 @@ export default class Card {
     this.classList.toggle("likebutton_active");
   }
 
+  handleCardClick(evt) {
+    const popupImage = new PopupWithImage(".popup_image");
+    popupImage.open(evt.target.alt, evt.target.src);
+    popupImage.setEventListeners();
+  }
+
+  //Abre o popup da Imagem.
+  /*
   _callPopupImage(evt) {
     const imageView = document.querySelector(".popup__image-view");
     imageView.src = evt.target.src;
@@ -52,7 +63,7 @@ export default class Card {
     imageTitle.textContent = evt.target.alt;
     document.querySelector(".popup_image").classList.add("popup_opened");
   }
-
+*/
   generateCard() {
     this._getTemplate();
     this._setListners();
