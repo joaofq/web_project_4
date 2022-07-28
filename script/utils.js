@@ -37,11 +37,13 @@ addButton.addEventListener("click", callPopupAddCard);
 
 //3 CLOSE POPUPS
 
+/*
 closePopupIcon.forEach(function (item) {
   item.addEventListener("click", function () {
     closePopup(item.closest(".popup"));
   });
 });
+*/
 
 function closePopup(item) {
   item.classList.remove("popup_opened");
@@ -49,6 +51,8 @@ function closePopup(item) {
   formAddCardValidator.resetValidation();
   formEditProfileValidator.resetValidation();
 }
+/*
+//Close Popup when click outside container
 
 popup.forEach(function (item) {
   item.addEventListener("click", function (evt) {
@@ -58,6 +62,8 @@ popup.forEach(function (item) {
   });
 });
 
+//Close Popup with Esc key
+
 popup.forEach(function (item) {
   document.addEventListener("keydown", function (evt) {
     if (item.classList.contains("popup_opened") && evt.key === "Escape") {
@@ -65,5 +71,5 @@ popup.forEach(function (item) {
     }
   });
 });
-
+*/
 export { closePopup };

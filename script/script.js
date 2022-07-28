@@ -2,6 +2,7 @@ import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import { closePopup } from "./utils.js";
 import Section from "./Section.js";
+import Popup from "./Popup.js";
 
 const popupEditProfile = document.querySelector(".popup-editprofile");
 const formEditProfile = document.forms.formEditProfile;
@@ -55,6 +56,9 @@ export const cardList = new Section(
   },
   ".elements",
 );
+
+export const popup = new Popup(".popup");
+popup.setEventListeners();
 
 /*
 function renderCards() {
