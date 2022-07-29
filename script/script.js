@@ -66,10 +66,9 @@ const userInfo = new UserInfo({
 
 //Save function on submit
 const saveProfileInputs = () => {
-  const profileName = document.querySelector(".profile__name");
-  const profileDescription = document.querySelector(".profile__description");
-  profileName.textContent = inputName.value;
-  profileDescription.textContent = inputAbout.value;
+  const newName = inputName.value;
+  const newDescription = inputAbout.value;
+  userInfo.setUserInfo(newName, newDescription);
 };
 
 //create instance
