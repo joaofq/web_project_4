@@ -2,6 +2,7 @@ import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import Section from "./Section.js";
 import PopupWithForm from "./PopupWithForm.js";
+import UserInfo from "./UserInfo.js";
 const editButton = document.querySelector(".editbutton");
 const addButton = document.querySelector(".addbutton");
 const formEditProfile = document.forms.formEditProfile;
@@ -9,7 +10,9 @@ const formAddCard = document.forms.formAddCard;
 const inputName = formEditProfile.elements.name;
 const inputAbout = formEditProfile.elements.about;
 
-//1. Render cards
+//1. RENDER ELEMENTS
+
+//1.1. Render cards
 
 export const initialCards = [
   {
@@ -50,10 +53,18 @@ export const cardList = new Section(
   ".elements",
 );
 
+//1.2. Render user info
+
+const userInfo = new UserInfo({
+  nameSelector: ".profile__name",
+  descriptionSelector: ".profile__description",
+});
+
 //2 POPUP WITH FORMS
 
-//2.1. Popup edit profile - puxa dados iniciais
+//2.1. Popup edit profile
 
+//Save function on submit
 const saveProfileInputs = () => {
   const profileName = document.querySelector(".profile__name");
   const profileDescription = document.querySelector(".profile__description");
@@ -61,14 +72,19 @@ const saveProfileInputs = () => {
   profileDescription.textContent = inputAbout.value;
 };
 
+//create instance
 const popupEditProfile = new PopupWithForm(
   ".popup-editprofile",
   saveProfileInputs,
 );
 popupEditProfile.setEventListeners();
 
+//open opoup
 editButton.addEventListener("click", () => {
   popupEditProfile.open();
+  const userObj = userInfo.getUserInfo();
+  inputName.value = userObj.name;
+  inputAbout.value = userObj.description;
 });
 
 //2.2. Popup addCard

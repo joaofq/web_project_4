@@ -4,9 +4,19 @@ Armazenar um método público chamado getUserInfo() que retorna um objeto com in
 Armazenar um método público chamado setUserInfo() que pega novos dados do usuário e adiciona na página.*/
 
 export default class UserInfo {
-  constructor({ name, about }) {}
+  constructor({ nameSelector, descriptionSelector }) {
+    this._name = nameSelector;
+    this._description = descriptionSelector;
+  }
 
-  getUserInfo() {}
+  getUserInfo() {
+    const name = document.querySelector(this._name).textContent;
+    const description = document.querySelector(this._description).textContent;
+    return { name, description };
+  }
 
-  setUserInfo() {}
+  setUserInfo(newName, newDescription) {
+    this._name.value = newName;
+    this._description = newDescription;
+  }
 }
