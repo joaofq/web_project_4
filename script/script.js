@@ -1,21 +1,13 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-import { closePopup } from "./utils.js";
 import Section from "./Section.js";
-import Popup from "./Popup.js";
-import PopupWithImage from "./PopupWithImage.js";
-
-const popupEditProfile = document.querySelector(".popup-editprofile");
+import PopupWithForm from "./PopupWithForm.js";
+const editButton = document.querySelector(".editbutton");
+const addButton = document.querySelector(".addbutton");
 const formEditProfile = document.forms.formEditProfile;
 const formAddCard = document.forms.formAddCard;
 const inputName = formEditProfile.elements.name;
 const inputAbout = formEditProfile.elements.about;
-const profileName = document.querySelector(".profile__name");
-const profileDescription = document.querySelector(".profile__description");
-const elements = document.querySelector(".elements");
-const popupAddCard = document.querySelector(".popup-addcard");
-const inputCardTitle = formAddCard.elements.title;
-const inputCardLink = formAddCard.elements.link;
 
 //1. Render cards
 
@@ -58,50 +50,46 @@ export const cardList = new Section(
   ".elements",
 );
 
-export const popup = new Popup(".popup");
-popup.setEventListeners();
+//2 POPUP WITH FORMS
 
-/*
-function renderCards() {
-  elements.innerHTML = "";
-  initialCards.map(function (item, index) {
-    const newCard = new Card(item.name, item.link, ".cardTemplate", index);
-    elements.append(newCard.generateCard());
-  });
-}
-*/
+//2.1. Popup edit profile - puxa dados iniciais
 
-//4 SAVE POPUPS DATA
-
-//4.1. Edit Profile
-
-formEditProfile.addEventListener("submit", function (evt) {
-  saveProfileInputs();
-  closePopup(popupEditProfile);
-  evt.preventDefault();
-});
-
-function saveProfileInputs() {
+const saveProfileInputs = () => {
+  const profileName = document.querySelector(".profile__name");
+  const profileDescription = document.querySelector(".profile__description");
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputAbout.value;
-}
+};
 
-//4.2. AddCards + Push initialCards list
+const popupEditProfile = new PopupWithForm(
+  ".popup-editprofile",
+  saveProfileInputs,
+);
+popupEditProfile.setEventListeners();
 
-formAddCard.addEventListener("submit", addCard);
+editButton.addEventListener("click", () => {
+  popupEditProfile.open();
+});
 
-function addCard(evt) {
+//2.2. Popup addCard
+
+const addCard = () => {
+  const inputCardTitle = formAddCard.elements.title;
+  const inputCardLink = formAddCard.elements.link;
   const newCard = {
     name: inputCardTitle.value,
     link: inputCardLink.value,
   };
   initialCards.unshift(newCard);
   cardList.renderItems();
-  closePopup(popupAddCard);
-  evt.preventDefault();
-}
+};
 
-//Enable form validations
+const popupAddCard = new PopupWithForm(".popup-addcard", addCard);
+popupAddCard.setEventListeners();
+
+addButton.addEventListener("click", () => {
+  popupAddCard.open();
+});
 
 const defaultConfig = {
   formSelector: ".popup__form",
@@ -111,7 +99,9 @@ const defaultConfig = {
   inputErrorClass: "popup__error",
   errorClass: "popup__error_visible",
 };
+
 const formAddCardValidator = new FormValidator(defaultConfig, formAddCard);
+
 const formEditProfileValidator = new FormValidator(
   defaultConfig,
   formEditProfile,
@@ -120,16 +110,19 @@ const formEditProfileValidator = new FormValidator(
 formAddCardValidator.enableValidation();
 formEditProfileValidator.enableValidation();
 cardList.renderItems();
+
 //renderCards();
 
+function resetValidation(item) {
+  formAddCardValidator.resetValidation();
+  formEditProfileValidator.resetValidation();
+}
+
 export {
-  popupEditProfile,
-  profileName,
-  profileDescription,
   inputName,
   inputAbout,
-  popupAddCard,
   formAddCard,
   formAddCardValidator,
   formEditProfileValidator,
+  resetValidation,
 };

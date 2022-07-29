@@ -1,40 +1,13 @@
+/* DELETAR? 
+
 import {
-  popupEditProfile,
   inputName,
-  profileName,
-  profileDescription,
   inputAbout,
-  popupAddCard,
   formAddCard,
   formAddCardValidator,
   formEditProfileValidator,
 } from "./script.js";
-
-const editButton = document.querySelector(".editbutton");
-const popup = document.querySelectorAll(".popup");
-const closePopupIcon = document.querySelectorAll(".popup__close-icon");
-const addButton = document.querySelector(".addbutton");
-
-//2 ABERTURA DE POPUPS
-
-//2.1. Popup edit profile - puxa dados iniciais
-
-function callPopupEditProfile() {
-  popupEditProfile.classList.add("popup_opened");
-  inputName.value = profileName.textContent;
-  inputAbout.value = profileDescription.textContent;
-}
-
-editButton.addEventListener("click", callPopupEditProfile);
-
-//2.2. Popup addCard
-
-function callPopupAddCard() {
-  popupAddCard.classList.add("popup_opened");
-}
-
-addButton.addEventListener("click", callPopupAddCard);
-
+*/
 //3 CLOSE POPUPS
 
 /*
@@ -45,12 +18,6 @@ closePopupIcon.forEach(function (item) {
 });
 */
 
-function closePopup(item) {
-  item.classList.remove("popup_opened");
-  formAddCard.reset();
-  formAddCardValidator.resetValidation();
-  formEditProfileValidator.resetValidation();
-}
 /*
 //Close Popup when click outside container
 
@@ -71,5 +38,6 @@ popup.forEach(function (item) {
     }
   });
 });
-*/
+
 export { closePopup };
+*/
