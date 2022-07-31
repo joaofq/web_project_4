@@ -2,7 +2,9 @@
 
 ### Visão geral
 
-Este é um projeto de uma página, elaborado durante o curso de desenvolvimento web Practicum by Yandex. O Projeto consiste em visualizar o layout no Figma e transformá-lo em código.
+Este é um projeto de uma página, elaborado durante o curso de desenvolvimento web Practicum by Yandex.
+
+O Projeto consiste em visualizar o layout no Figma e transformá-lo em código, bem como adaptá-lo às novas tecnologias abordadas ao longo do curso.
 
 **Tecnologias Utilizadas**
 
