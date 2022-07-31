@@ -1,5 +1,5 @@
 import Popup from "./Popup.js";
-import { resetValidation } from "./script.js";
+import { resetValidation } from "../page/index.js";
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, submitFunction) {

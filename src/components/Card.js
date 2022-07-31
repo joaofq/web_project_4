@@ -1,5 +1,5 @@
 import PopupWithImage from "./PopupWithImage.js";
-import { initialCards } from "./script.js";
+import { initialCards } from "../page/index.js";
 
 export default class Card {
   constructor(text, link, templateSelector, index) {

@@ -18,6 +18,8 @@ Este é um projeto de uma página, elaborado durante o curso de desenvolvimento 
   -- Validação instantânea de formulários
   -- Classes
   -- Organização em módulos
+- Webpack
+- Babel
 
 * [Link para o projeto no Figma - Sprint 4](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
 
