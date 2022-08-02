@@ -143,7 +143,7 @@ cardList.renderItems();
 
 //renderCards();
 
-function resetValidation(item) {
+function handleResetValidation(item) {
   formAddCardValidator.resetValidation();
   formEditProfileValidator.resetValidation();
 }
@@ -154,5 +154,5 @@ export {
   formAddCard,
   formAddCardValidator,
   formEditProfileValidator,
-  resetValidation,
+  handleResetValidation,
 };

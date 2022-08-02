@@ -1,5 +1,5 @@
 import Popup from "./Popup.js";
-import { resetValidation } from "../page/index.js";
+import { handleResetValidation } from "../page/index.js";
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, submitFunction) {
@@ -26,6 +26,6 @@ export default class PopupWithForm extends Popup {
   close() {
     super.close();
     this._form.reset();
-    resetValidation();
+    handleResetValidation();
   }
 }
