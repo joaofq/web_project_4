@@ -148,6 +148,13 @@ function handleResetValidation(item) {
   formEditProfileValidator.resetValidation();
 }
 
+//render dinamic date on footer
+
+const date = new Date();
+const currentYear = date.getFullYear();
+const footer = document.querySelector(".footer__text");
+footer.textContent = `© ${currentYear} Around The U.S.`;
+
 export {
   inputName,
   inputAbout,

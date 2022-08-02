@@ -27,4 +27,4 @@ O Projeto consiste em visualizar o layout no Figma e transformá-lo em código, 
 
 * [Link para o projeto no Figma - Sprint 5](https://www.figma.com/file/HD3sjY52cfmedXVdlxkhZ0/WEB%2C-Sprint-5)
 
-* [Link para visualização do projeto no Github Pages](https://joaofq.github.io/web_project_4/)
+* [Link para visualização do projeto no Github Pages será disponibilizado no Sprint 9]
