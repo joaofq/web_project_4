@@ -5,6 +5,7 @@ import FormValidator from "./components/FormValidator.js";
 import Section from "./components/Section.js";
 import PopupWithForm from "./components/PopupWithForm.js";
 import UserInfo from "./components/UserInfo.js";
+import PopupWithImage from "./components/PopupWithImage.js";
 const editButton = document.querySelector(".editbutton");
 const addButton = document.querySelector(".addbutton");
 const formEditProfile = document.forms.formEditProfile;
@@ -43,11 +44,23 @@ export const initialCards = [
   },
 ];
 
+const handleCardClick = (evt) => {
+  const popupImage = new PopupWithImage(".popup_image");
+  popupImage.open(evt.target.alt, evt.target.src);
+  popupImage.setEventListeners();
+};
+
 export const cardList = new Section(
   {
     items: initialCards,
     renderer: (item, index) => {
-      const newCard = new Card(item.name, item.link, ".cardTemplate", index);
+      const newCard = new Card(
+        item.name,
+        item.link,
+        ".cardTemplate",
+        index,
+        handleCardClick,
+      );
       const cardElement = newCard.generateCard();
       cardList.addItem(cardElement);
     },
