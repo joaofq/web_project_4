@@ -11,6 +11,6 @@
   max-width: 358px;
 }
 
-.popup__input:invalid {
+.popup__input-error {
   border-bottom: 1px solid red;
 }

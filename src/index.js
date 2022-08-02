@@ -126,7 +126,7 @@ const defaultConfig = {
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
   inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__error",
+  inputErrorClass: "popup__input-error",
   errorClass: "popup__error_visible",
 };
 
